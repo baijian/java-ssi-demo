@@ -12,4 +12,5 @@
 
 #execute file
 bin/*
+target/*
 
