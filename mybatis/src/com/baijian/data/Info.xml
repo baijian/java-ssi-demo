@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Info">
+    <resultMap id="result" type="Info">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+    </resultMap>
+    <select id="getAll" resultMap="result">
+        SELECT * FROM info
+    </select>
+    <select id="getById" parameterType="int" resultMap="result">
+        SELECT * FROM info WHERE id = #{id}
+    </select>
+    <delete id="deleteById" parameterType="int">
+        DELETE from info WHERE id = #{id};
+    </delete>
+    <insert id="insert" parameterType="Info">
+    	INSERT INTO info (name, phone, email) 
+                VALUES (#{name}, #{phone}, #{email});
+        <selectKey keyProperty="id" resultType="int" order="AFTER">
+                select last_insert_id() as id
+        </selectKey>
+    </insert>
+
+        <update id="update" parameterType="Info">
+                UPDATE info
+                SET
+                   email = #{email},
+                   name = #{name},
+                   phone = #{phone}
+                WHERE id = #{id};
+  	    </update>
+
+</mapper>
