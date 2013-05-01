@@ -16,14 +16,9 @@
    		<property name="user" value="root" />
    		<property name="password" value="123456" />
 	</bean>
-	
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="DBPoolDataSource" />
 	</bean>
-	<!-- Enable annotation style of managing transactions -->
-	<!--  
-	<tx:annotation-driven transaction-manager="transactionManager" />
-	-->
 	<!-- define the SqlSessionFactory, this bean will provide SessionFactory instances of MyBatis -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
    		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
@@ -34,8 +29,13 @@
 	then we will be able to get the instances of UserMapper using @Autowired annotation,
 	we do not have to implement the interface as MyBatis will provide proxy implementation for this.-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 		<property name="basePackage" value="com.baijian.web.helloworld.mapper" />
 	</bean>
+	<!-- Enable annotation style of managing transactions -->
+	<!--  
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	-->
 	<!-- 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />

@@ -1,6 +1,5 @@
 package com.baijian.web.helloworld.action;
 
-import com.baijian.web.helloworld.mapper.UserMapper;
 import com.baijian.web.helloworld.service.UserService;
 
 public class HelloWorldAction {
@@ -8,7 +7,6 @@ public class HelloWorldAction {
 	private String username;
 	private String password;
 	
-	private UserMapper userMapper;
 	private UserService userService;
 	
 	public String getUsername() {
@@ -35,16 +33,9 @@ public class HelloWorldAction {
 		this.userService = userService;
 	}
 
-	public UserMapper getUserMapper() {
-		return userMapper;
-	}
-
-	public void setUserMapper(UserMapper userMapper) {
-		this.userMapper = userMapper;
-	}
-
 	public String hello(){
-		userService.printMes();
+		String username = userService.printMes();
+		this.setUsername(username);
 		return "hello";
 	}
 }

@@ -6,7 +6,7 @@
 	<constant name="struts.devMode" value="true" />
 	<package name="helloworld" extends="struts-default">
 		<action name="hello" class="helloWorldAction" method="hello">
-			<result name="hello">/hello.jsp</result>
+			<result name="hello">/index.jsp</result>
 		</action>
 	</package>
 </struts>

@@ -26,8 +26,10 @@ public class UserService {
 		return this.userMapper.getUser(userId);
 	}
 	
-	public void printMes(){
-		System.out.println("haha");
+	public String printMes(){
+		User u = userMapper.getUser(1);
+		System.out.println("haha " + u.getUserName());
+		return u.getUserName();
 	}
 
 }
