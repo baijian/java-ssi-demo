@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC 
+	"-//mybatis.org//DTD Config 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+	
+<configuration>
+    <!--
+	<properties resource="mybatis.properties">
+		<property name="username" value="root" />
+		<property name="password" value="123456" />
+	</properties>
+    -->
+	<settings>
+		<setting name="lazyLoadingEnabled" value="false"/>
+	<!-- 
+		<setting name="cacheEnabled" value="true"/>
+		<setting name="defaultStatementTimeout" value="25"/>
+	 -->
+	</settings>
+    <typeAliases>
+    	<!--  
+    	<typeAlias alias="User" type="com.baijian.web.helloworld.model.User"/>
+    	-->
+        <package name="com.baijian.web.helloworld.model"/>
+    </typeAliases>
+    <!--  
+    <typeHandlers>
+    	<typeHandler handler=""/>
+    </typeHandlers>-->
+    <!--  
+    <environments default="development">
+       <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+               <property name="driver" value="${db.driver}"/>
+               <property name="url" value="${db.url}"/>
+               <property name="username" value="${db.user}"/>
+               <property name="password" value="${db.pass}"/>
+            </dataSource>
+       </environment>
+    </environments>
+    -->
+    <!--  
+    <mappers>
+       <mapper resource="mappers/user.xml"/>
+    </mappers>
+    -->
+</configuration>

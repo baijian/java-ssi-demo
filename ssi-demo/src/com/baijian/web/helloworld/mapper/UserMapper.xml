@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- mapper define the sql statement for the mybatis service
+  namespace define the interface for which this mapping file has been defined -->
+<mapper namespace="com.baijian.web.helloworld.mapper.UserMapper">
+<!--  
+	<resultMap id="result" type="user">
+		<result property="id" column="id"/>
+		<result property="username" column="username"/>
+		<result property="chineseName" column="cn_name"/>
+		<result property="englishName" column="en_name"/>
+		<result property="gender" column="gender"/>
+		<result property="status" column="status"/>
+		<result property="email" column="email"/>
+	</resultMap>
+	<select id="getAllUser" parameterType="int" resultType="result">
+		select id,username,cn_name,en_name,gender,email 
+		from user;
+	</select>-->
+	<insert id="insertUser" parameterType="user">
+		insert into user (id,username,cn_name,en_name,gender,email)
+		values (#{id},#{username},#{cn_name},#{en_name},#{gender},#{email},)
+	</insert>
+	<update id="updateUser" parameterType="user">
+		update user set
+		name = #{name},
+		where id = #{id}
+	</update>
+	<delete id="deleteUser" parameterType="int">
+		delete from user
+		where id = #{id}
+	</delete>
+</mapper>

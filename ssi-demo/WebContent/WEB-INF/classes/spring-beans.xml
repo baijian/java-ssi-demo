@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <bean id="helloWorldAction" class="com.baijian.web.helloworld.action.HelloWorldAction" scope="prototype">
+       <property name="userService" ref="userService"/>
+   </bean>
+   <bean id="userService" class="com.baijian.web.helloworld.service.UserService" />
+   
+	<bean id="DBPoolDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+   		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+   		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test" />
+   		<property name="user" value="root" />
+   		<property name="password" value="123456" />
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="DBPoolDataSource" />
+	</bean>
+	<!-- Enable annotation style of managing transactions -->
+	<!--  
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	-->
+	<!-- define the SqlSessionFactory, this bean will provide SessionFactory instances of MyBatis -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+   		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+   		<property name="dataSource" ref="DBPoolDataSource"></property>
+	</bean>
+	<!-- scan for mappers and let them be autowired, MapperScannerConfigurer
+	is used to publish the data service interfaces in defined for MyBatis to configure as Spring Beans,
+	then we will be able to get the instances of UserMapper using @Autowired annotation,
+	we do not have to implement the interface as MyBatis will provide proxy implementation for this.-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.baijian.web.helloworld.mapper" />
+	</bean>
+	<!-- 
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.baijian.web.helloworld.mapper.UserMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean> 
+	<bean id="userService" class="com.baijian.web.helloworld.service.UserService">
+		<property name="userMapper" ref="userMapper" />
+	</bean>-->
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
