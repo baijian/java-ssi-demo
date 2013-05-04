@@ -8,7 +8,7 @@
 #eclipse file
 .classpath
 .project
-.settings/*
+.settings
 
 #execute file
 bin/*

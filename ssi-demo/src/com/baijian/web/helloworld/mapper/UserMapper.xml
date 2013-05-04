@@ -5,7 +5,6 @@
   <!-- mapper define the sql statement for the mybatis service
   namespace define the interface for which this mapping file has been defined -->
 <mapper namespace="com.baijian.web.helloworld.mapper.UserMapper">
-<!--  
 	<resultMap id="result" type="user">
 		<result property="id" column="id"/>
 		<result property="username" column="username"/>
@@ -15,10 +14,25 @@
 		<result property="status" column="status"/>
 		<result property="email" column="email"/>
 	</resultMap>
-	<select id="getAllUser" parameterType="int" resultType="result">
-		select id,username,cn_name,en_name,gender,email 
-		from user;
-	</select>-->
+	<select id="getPer" parameterType="map" resultType="result">
+		select id, username, cn_name, en_name, gender, email from user
+		where id = #{id}
+		and username = #{uname}
+	</select>
+	<select id="getAllUser" parameterType="HashMap" resultType="result">
+		select id,username,cn_name,en_name,gender,email from user 
+		<where>
+			<if test="startId != null">
+				id > #{startId}
+			</if>
+			<if test="endId != null">
+				and id < #{endId}
+			</if>
+			<if test="gender != null">
+				and gender = #{gender}
+			</if>
+		</where>
+	</select>
 	<insert id="insertUser" parameterType="user">
 		insert into user (id,username,cn_name,en_name,gender,email)
 		values (#{id},#{username},#{cn_name},#{en_name},#{gender},#{email},)

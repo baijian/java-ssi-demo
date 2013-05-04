@@ -1,7 +1,9 @@
 package com.baijian.web.helloworld.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.baijian.web.helloworld.model.User;
@@ -24,5 +26,7 @@ public interface UserMapper {
 	
 	public void deleteUser(int id);
 	
-	public List<User> getAllUser();
+	public List<User> getAllUser(HashMap<String, Object> hashMap);
+	
+	public User getPer(@Param("id") String id, @Param("uname") String username);
 }

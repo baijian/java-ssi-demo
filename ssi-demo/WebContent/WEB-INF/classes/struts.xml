@@ -4,7 +4,9 @@
    "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<constant name="struts.devMode" value="true" />
-	<package name="helloworld" extends="struts-default">
+	<!-- package name is just a name no meanings
+	 	 namespace is used to match url pattern  -->
+	<package name="helloworld" namespace="test" extends="struts-default">
 		<action name="hello" class="helloWorldAction" method="hello">
 			<result name="hello">/index.jsp</result>
 		</action>

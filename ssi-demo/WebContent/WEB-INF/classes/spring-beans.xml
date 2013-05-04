@@ -24,6 +24,7 @@
    		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
    		<property name="dataSource" ref="DBPoolDataSource"></property>
 	</bean>
+	
 	<!-- scan for mappers and let them be autowired, MapperScannerConfigurer
 	is used to publish the data service interfaces in defined for MyBatis to configure as Spring Beans,
 	then we will be able to get the instances of UserMapper using @Autowired annotation,
