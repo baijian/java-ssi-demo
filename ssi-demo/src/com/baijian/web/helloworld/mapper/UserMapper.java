@@ -26,7 +26,7 @@ public interface UserMapper {
 	
 	public void deleteUser(int id);
 	
-	public List<User> getAllUser(HashMap<String, Object> hashMap);
+	//public List<User> getAllUser(HashMap<String, Object> hashMap);
 	
 	public User getPer(@Param("id") String id, @Param("uname") String username);
 }

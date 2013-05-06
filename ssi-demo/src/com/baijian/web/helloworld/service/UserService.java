@@ -35,9 +35,11 @@ public class UserService {
 		return u.getUserName();
 	}
 
+	/*
 	public List<User> getUser(HashMap<String, Object> hashMap){
 		return this.userMapper.getAllUser(hashMap);
 	}
+	*/
 	
 	public User getPer(String id, String username){
 		return this.userMapper.getPer(id, username);

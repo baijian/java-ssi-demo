@@ -8,10 +8,13 @@
 <title>HelloWorld</title>
 </head>
 <body>
+<!-- 
 <s:form action="hello">
 	<s:textfield name="username" label="Username" />
 	<s:password name="password" label="Password" />
 	<s:submit />
 </s:form>
+ -->
+ hello
 </body>
 </html>
