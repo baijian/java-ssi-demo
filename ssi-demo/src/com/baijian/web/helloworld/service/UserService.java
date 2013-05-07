@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.baijian.web.helloworld.mapper.UserMapper;
 import com.baijian.web.helloworld.model.User;
@@ -14,12 +15,6 @@ public class UserService {
 	
 	@Autowired
 	private UserMapper userMapper;
-	
-	/*
-	@Transactional
-	public void insertUser(User user){
-		
-	}*/
 
 	public void setUserMapper(UserMapper userMapper) {
 		this.userMapper = userMapper;
@@ -43,5 +38,10 @@ public class UserService {
 	
 	public User getPer(String id, String username){
 		return this.userMapper.getPer(id, username);
+	}
+	
+	@Transactional
+	public int insertUser(HashMap<String, Object> hashMap){
+		return this.userMapper.insertUser(hashMap);
 	}
 }

@@ -16,6 +16,8 @@ import org.arabidopsis.ahocorasick.SearchResult;
 
 public class HelloWorldAction {
 
+	private int id;
+	
 	private String username;
 	private String password;
 	private User u;
@@ -27,18 +29,21 @@ public class HelloWorldAction {
 	private UserService userService;
 	
 	public String hello(){
+		/*
 		String username = userService.printMes();
 		HashMap<String, Object> hashMap = new HashMap<String, Object>();
 		hashMap.put("startId", "1");
 		hashMap.put("endId", "2");
+		*/
 		//List<User> users = userService.getUser(hashMap);
-		this.setUsername(username);
+		//this.setUsername(username);
 		//this.setUsers(users);
 		//User u = userService.getPer("1", "baijian");
 		//this.setU(u);
 		/*
 		 * file upload
 		 */
+		/*
 		String filePath = "/tmp/";
 		System.out.println("Src File Name:" + file);
 		System.out.println("Src File Content Type:" + fileContentType);
@@ -50,6 +55,8 @@ public class HelloWorldAction {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
+		/*
 		AhoCorasick<String> tree =new AhoCorasick<String>();
 		tree.add("hello".getBytes(), "hello");
 		tree.add("word".getBytes(),"word");
@@ -59,8 +66,29 @@ public class HelloWorldAction {
 			SearchResult<String> result = searcher.next();
 			System.out.println(result.getOutputs());
 			System.out.println("Found at index:" + result.getLastIndex());
-		}
+		}*/
+		HashMap<String, Object> h = new HashMap<String, Object>();
+		h.put("username", "jianbaij");
+		h.put("cn_name", "bj");
+		h.put("en_name", "b");
+		h.put("gender", "1");
+		h.put("status", "1");
+		h.put("email", "jian.baij@gmail.com");
+		h.put("id", 0);
+		System.out.println(h.get("id"));
+		userService.insertUser(h);
+		System.out.println(h.get("id"));
+		this.setId((Integer) h.get("id"));
+		//this.setId(userService.insertUser(h));
 		return "hello";
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFileFileName() {

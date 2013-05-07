@@ -20,7 +20,7 @@ public interface UserMapper {
 	@Select("select * from user where id = #{id}")
 	User getUser(int id);
 	
-	public void insertUser(User user);
+	public int insertUser(HashMap<String, Object> hashMap);
 	
 	public void updateUser(User user);
 	

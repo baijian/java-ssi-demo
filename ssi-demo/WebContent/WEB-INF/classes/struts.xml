@@ -4,11 +4,16 @@
    "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<constant name="struts.devMode" value="true" />
+	<constant name="struts.multipart.maxSize" value="1000000" />
 	<!-- package name is just a name no meanings
 	 	 namespace is used to match url pattern 
 	 	 namespace="test" -->
 	<package name="helloworld"  extends="struts-default">
 		<action name="hello" class="helloWorldAction" method="hello">
+			<interceptor-ref name="basicStack" />
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/jpeg,image/gif</param>
+			</interceptor-ref>
 			<result name="hello">/hello.jsp</result>
 		</action>
 	</package>

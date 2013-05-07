@@ -35,9 +35,9 @@
 			</if>
 		</where>
 	</select>-->
-	<insert id="insertUser" parameterType="user">
-		insert into user (id,username,cn_name,en_name,gender,email)
-		values (#{id},#{username},#{cn_name},#{en_name},#{gender},#{email},)
+	<insert id="insertUser" parameterType="HashMap" useGeneratedKeys="true" keyProperty="id">
+		insert into user (username,cn_name,en_name,gender,status,email)
+		values (#{username},#{cn_name},#{en_name},#{gender},#{status},#{email})
 	</insert>
 	<update id="updateUser" parameterType="user">
 		update user set
