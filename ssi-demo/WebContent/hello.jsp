@@ -18,5 +18,7 @@
  hello
  <br/>
 ID:${id }
+<br/>
+${testinfo}
 </body>
 </html>

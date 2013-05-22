@@ -3,6 +3,7 @@ package com.baijian.web.helloworld.mapper;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -24,7 +25,9 @@ public interface UserMapper {
 	
 	public void updateUser(User user);
 	
-	public void deleteUser(int id);
+	/*
+	@Delete("delete from user where id = #{id}")
+	public void deleteUser(int id);*/
 	
 	//public List<User> getAllUser(HashMap<String, Object> hashMap);
 	

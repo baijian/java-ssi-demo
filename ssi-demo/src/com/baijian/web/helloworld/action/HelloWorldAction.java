@@ -7,20 +7,25 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 
 import com.baijian.web.helloworld.model.User;
 import com.baijian.web.helloworld.service.UserService;
+import com.baijian.web.helloworld.vo.UserVo;
 
 import org.arabidopsis.ahocorasick.AhoCorasick;
 import org.arabidopsis.ahocorasick.SearchResult;
 
 public class HelloWorldAction {
+	
+	private static final Logger logger = Logger.getLogger(HelloWorldAction.class.getName());
 
 	private int id;
 	
 	private String username;
 	private String password;
 	private User u;
+	private UserVo userVo;
 	private List<User> users;
 	private File file;
 	private String fileContentType;
@@ -28,7 +33,10 @@ public class HelloWorldAction {
 	
 	private UserService userService;
 	
+	private String testinfo;
+	
 	public String hello(){
+		this.setU(this.getUserVo().toModel(this.getU()));
 		/*
 		String username = userService.printMes();
 		HashMap<String, Object> hashMap = new HashMap<String, Object>();
@@ -67,6 +75,8 @@ public class HelloWorldAction {
 			System.out.println(result.getOutputs());
 			System.out.println("Found at index:" + result.getLastIndex());
 		}*/
+		logger.info("fuck=====");
+		logger.debug("hahahahfuck===");
 		HashMap<String, Object> h = new HashMap<String, Object>();
 		h.put("username", "jianbaij");
 		h.put("cn_name", "bj");
@@ -79,8 +89,26 @@ public class HelloWorldAction {
 		userService.insertUser(h);
 		System.out.println(h.get("id"));
 		this.setId((Integer) h.get("id"));
+		this.setTestinfo("fuck you");
 		//this.setId(userService.insertUser(h));
+		logger.info("end.....");
 		return "hello";
+	}
+
+	public UserVo getUserVo() {
+		return userVo;
+	}
+
+	public void setUserVo(UserVo userVo) {
+		this.userVo = userVo;
+	}
+
+	public String getTestinfo() {
+		return testinfo;
+	}
+
+	public void setTestinfo(String testinfo) {
+		this.testinfo = testinfo;
 	}
 
 	public int getId() {
