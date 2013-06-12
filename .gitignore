@@ -6,9 +6,9 @@
 *.ear
 
 #eclipse file
-.classpath
-.project
-.settings
+#.classpath
+#.project
+#.settings
 
 #execute file
 bin/*
